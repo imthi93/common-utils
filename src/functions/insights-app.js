@@ -24,8 +24,8 @@ function init(context, correlationId, requestId, uniqueIds = []) {
 function getCommonLogProperties(context) {
     return {
         Source_App: 'Azure',
-        Service_Name: 'FourKites_Integration',
-        Component_Name: `fn-${process.env.STAGE}-fourkites-integration`,
+        Service_Name: 'service name',
+        Component_Name: `fn-${process.env.STAGE}-app-name`,
         Method: context?.functionName,
         Instance_Id: context?.invocationId,
         Correlation_Id: context?.correlationId,

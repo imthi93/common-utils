@@ -31,8 +31,8 @@ function publish(context, message) {
 function getCommonLogProperties(context) {
     return {
         Source_App: 'Azure',
-        Service_Name: 'FourKites_Integration',
-        Component_Name: `fn-${process.env.STAGE}-fourkites-integration`,
+        Service_Name: 'service name',
+        Component_Name: `fn-${process.env.STAGE}-app name`,
         Method: context?.functionName,
         Unique_ID: context?.uniqueIds,
         Correlation_Id: context?.correlationId,
