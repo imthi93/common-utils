@@ -1,0 +1,20 @@
+{
+  "name": "app Name",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/functions/*.js",
+  "scripts": {
+    "start": "func start",
+    "build": "cd utilities && npm install && cd .. && npm install",
+    "test": "echo \"No tests yet...\""
+  },
+  "dependencies": {
+    "@azure/functions": "4.3.0",
+    "middleware-util": "file:utilities",
+    "oracledb": "6.3.0"
+  },
+  "devDependencies": {
+    "@azure/data-tables": "^13.2.2",
+    "azure-functions-core-tools": "^4.x"
+  }
+}

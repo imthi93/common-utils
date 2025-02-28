@@ -1,0 +1,310 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Dimitri Integration APIs",
+    "version": "2.0.1",
+    "description": "API documentation for shipment, appointment booking, and generic operations."
+  },
+  "servers": [
+    {
+      "url": "https://apim-dev-intg.niagarawater.com/api/dev/dimitri/v2",
+      "description": "DEV - Dimitri Integration V2 - VNET Enabled"
+    },
+    {
+      "url": "https://apim-dev-intg.azure-api.net/api/dev/dimitri/v2",
+      "description": "DEV - Dimitri Integration V2 - NON VNET Enabled"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "x-api-key": {
+        "type": "apiKey",
+        "name": "x-api-key",
+        "in": "header"
+      }
+    }
+  },
+  "paths": {
+    "/shipmentfromotmcloud": {
+      "post": {
+        "summary": "Get shipment details",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "TransactionNumber": {
+                    "type": "string",
+                    "example": "1234"
+                  },
+                  "TransactionID": {
+                    "type": "string",
+                    "nullable": true,
+                    "example": "null"
+                  },
+                  "SourceOfApICall": {
+                    "type": "string",
+                    "example": "Dimitri"
+                  },
+                  "Email": {
+                    "type": "string",
+                    "example": "Email"
+                  },
+                  "IncidentType": {
+                    "type": "string",
+                    "example": "Pickup"
+                  },
+                  "RefValue": {
+                    "type": "string",
+                    "example": "RefValue"
+                  },
+                  "ScacCode": {
+                    "type": "string",
+                    "example": "FedEx"
+                  },
+                  "PlantCode": {
+                    "type": "string",
+                    "example": "PHI"
+                  },
+                  "AppointmentType": {
+                    "type": "string",
+                    "example": "PL"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "207": {
+            "description": "Shipment details retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ShipmentDetails": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "TransactionId": {
+                            "type": "string",
+                            "example": "b844b4a2-8f03-4c30-863d-408e330b38a8"
+                          },
+                          "Delivery": {
+                            "type": "string",
+                            "example": "36197857"
+                          },
+                          "OrderReleaseGID": {
+                            "type": "string",
+                            "example": "NBL.36197857"
+                          },
+                          "TripID": {
+                            "type": "string",
+                            "example": "56623744"
+                          },
+                          "CustomerPO": {
+                            "type": "string",
+                            "example": "SOM150710001"
+                          },
+                          "ShipmentGID": {
+                            "type": "string",
+                            "example": "NBL.NB32210274"
+                          },
+                          "SalesOrderNumber": {
+                            "type": "string",
+                            "example": "18840855"
+                          },
+                          "ShipmentStatus": {
+                            "type": "string",
+                            "example": "NBL.SHIP_CONFIRMED"
+                          },
+                          "WMSStatus": {
+                            "type": "string",
+                            "example": "NBL.WMS_SH_LOCKED"
+                          },
+                          "IsPreload": {
+                            "type": "string",
+                            "example": "PL"
+                          },
+                          "CustomerName": {
+                            "type": "string",
+                            "example": "H-E-B FOOD,710,AUSTIN,TX,USA"
+                          },
+                          "StopLocation": {
+                            "type": "string",
+                            "example": "NBL.ORG-1942-95045"
+                          },
+                          "Rate_Geo_GID": {
+                            "type": "string",
+                            "example": "NBL.CPU_HEB"
+                          },
+                          "Source": {
+                            "type": "string",
+                            "example": "SAN"
+                          },
+                          "LoadType": {
+                            "type": "string",
+                            "example": "CPU"
+                          },
+                          "SourceOfApICall": {
+                            "type": "string",
+                            "example": "DIMITRI"
+                          },
+                          "Email": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "Weight": {
+                            "type": "string",
+                            "example": "49942.8"
+                          },
+                          "Indicator": {
+                            "type": "string",
+                            "example": "G"
+                          },
+                          "TransactionStatusCode": {
+                            "type": "string",
+                            "example": "In Transit"
+                          },
+                          "ErrorDescription": {
+                            "type": "string",
+                            "example": "Shipment details available."
+                          },
+                          "ScheduleIndicator": {
+                            "type": "string",
+                            "example": "NBL.NBL_SCHEDULED_APPT"
+                          },
+                          "ReasonCode": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "ShipmentIndicator": {
+                            "type": "string",
+                            "example": "G"
+                          },
+                          "RefValue": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "PickupAddress": {
+                            "type": "string",
+                            "example": "SAN ANTONIO, 1730 8TH STREET, SEGUIN, TX, 78155"
+                          },
+                          "DestinationAddress": {
+                            "type": "string",
+                            "example": "H-E-B FOOD,710,AUSTIN,TX,USA, 8801 CONGRESS AVE, AUSTIN, TX, 78745"
+                          },
+                          "TotalPallet": {
+                            "type": "string",
+                            "example": "22"
+                          },
+                          "RateOfferingGid": {
+                            "type": "string",
+                            "example": "NBL.CPU_HEB"
+                          },
+                          "AppointmentDate": {
+                            "type": "string",
+                            "example": "06/01/2024 11:00 PM"
+                          },
+                          "DeliveryAppointment": {
+                            "type": "string",
+                            "example": "06/02/2024 05:54 AM"
+                          },
+                          "OrderLatePickupDate": {
+                            "type": "string",
+                            "example": "06/02/2024 02:00 AM"
+                          },
+                          "LoadedDistance": {
+                            "type": "string",
+                            "example": "51.2"
+                          },
+                          "LateDeliveryFlag": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "TransferFlag": {
+                            "type": "string",
+                            "example": "No"
+                          },
+                          "PlantTimeZone": {
+                            "type": "string",
+                            "example": "America/Chicago"
+                          },
+                          "DestinationOrgId": {
+                            "type": "string",
+                            "example": "CUS-213128-152517"
+                          },
+                          "DtsLocationType": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "SourceOrgType": {
+                            "type": "string",
+                            "example": "1PL"
+                          },
+                          "TransportMode": {
+                            "type": "string",
+                            "example": "NBL.TRUCK"
+                          },
+                          "OriginalRequestDate": {
+                            "type": "string",
+                            "example": "02-JUN-24"
+                          },
+                          "OrderCustomerRemark": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "ItemDescAndCount": {
+                            "type": "string",
+                            "example": "05L.DM.HILL COUNTRY FARE.24P.N.84.GP--84"
+                          },
+                          "Optimal": {
+                            "type": "string",
+                            "example": "No"
+                          },
+                          "AppointmentType": {
+                            "type": "string",
+                            "example": ""
+                          }
+                        }
+                      }
+                    },
+                    "StatusMessage": {
+                      "type": "string",
+                      "example": "Shipment details available."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Technical fault occurred",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "StatusMessage": {
+                      "type": "string",
+                      "example": "Technical fault has occurred. please contact Niagara Integration team."
+                    },
+                    "ShipmentDetails": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

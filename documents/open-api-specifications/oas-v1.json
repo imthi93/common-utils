@@ -1,0 +1,488 @@
+{
+	"openapi": "3.0.0",
+	"info": {
+		"title": "Dimitri Integration APIs",
+		"version": "1.0.0",
+		"description": "API documentation for shipment, appointment booking, and generic operations."
+	},
+	"paths": {
+		"/getShipment": {
+			"post": {
+				"summary": "Get shipment details",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"TransactionNumber": {
+										"type": "string",
+										"example": "1234"
+									},
+									"TransactionID": {
+										"type": "string",
+										"nullable": true,
+										"example": "null"
+									},
+									"SourceOfApICall": {
+										"type": "string",
+										"example": "SourceOfApICall"
+									},
+									"Email": {
+										"type": "string",
+										"example": "Email"
+									},
+									"IncidentType": {
+										"type": "string",
+										"example": "IncidentType"
+									},
+									"RefValue": {
+										"type": "string",
+										"example": "RefValue"
+									},
+									"ScacCode": {
+										"type": "string",
+										"example": "FedEx"
+									},
+									"PlantCode": {
+										"type": "string",
+										"example": "PHI"
+									},
+									"AppointmentType": {
+										"type": "string",
+										"example": "PL"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Shipment details retrieved successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"ShipmentDetails": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"TransactionId": {
+														"type": "integer",
+														"example": 93927
+													},
+													"Delivery": {
+														"type": "string",
+														"example": "36051700"
+													},
+													"OrderReleaseGID": {
+														"type": "string",
+														"example": "NBL.36051700"
+													},
+													"TripID": {
+														"type": "string",
+														"example": ""
+													},
+													"CustomerPO": {
+														"type": "string",
+														"example": "009384928"
+													},
+													"ShipmentGID": {
+														"type": "string",
+														"example": "NBL.NB92109113"
+													},
+													"SalesOrderNumber": {
+														"type": "string",
+														"example": "18683679"
+													},
+													"ShipmentStatus": {
+														"type": "string",
+														"example": ""
+													},
+													"WMSStatus": {
+														"type": "string",
+														"example": "NBL.WMS_NOT_STARTED"
+													},
+													"IsPreload": {
+														"type": "string",
+														"example": "PL"
+													},
+													"CustomerName": {
+														"type": "string",
+														"example": "WEGMANS FO,10,CHERRY HIL,NJ,USA"
+													},
+													"Rate_Geo_GID": {
+														"type": "string",
+														"example": "NBL.SPOT_DTS|HAZ|JERSEY_S"
+													},
+													"Source": {
+														"type": "string",
+														"example": "HAZ"
+													},
+													"LoadType": {
+														"type": "string",
+														"example": "VDE"
+													},
+													"SourceOfApICall": {
+														"type": "string",
+														"example": "DIMITRI"
+													},
+													"Email": {
+														"type": "string",
+														"example": ""
+													},
+													"Weight": {
+														"type": "string",
+														"example": "14799.6"
+													},
+													"Indicator": {
+														"type": "string",
+														"example": "G"
+													},
+													"TransactionStatusCode": {
+														"type": "string",
+														"example": "In Transit"
+													},
+													"ErrorDescription": {
+														"type": "string",
+														"example": "Shipment details available."
+													},
+													"ScheduleIndicator": {
+														"type": "string",
+														"example": "NBL.NBL_SCHEDULED_APPT"
+													},
+													"ReasonCode": {
+														"type": "string",
+														"example": ""
+													},
+													"ShipmentIndicator": {
+														"type": "string",
+														"example": "Y"
+													},
+													"RefValue": {
+														"type": "string",
+														"example": "1ST PO 009384928 ARRIVAL TIME 04:00AM"
+													},
+													"PickupAddress": {
+														"type": "string",
+														"example": "HAZLETON, 100 TIMBERLINE DR., HAZLE TOWNSHIP, PA, 18202"
+													},
+													"DestinationAddress": {
+														"type": "string",
+														"example": "WEGMANS FO,10,CHERRY HIL,NJ,USA, 2100 ROUTE 70 WEST, CHERRY HILL, NJ, 08002"
+													},
+													"TotalPallet": {
+														"type": "string",
+														"example": "6"
+													},
+													"RateOfferingGid": {
+														"type": "string",
+														"example": ""
+													},
+													"AppointmentDate": {
+														"type": "string",
+														"format": "date-time",
+														"example": "2024-06-29T17:00:00Z"
+													},
+													"DeliveryAppointment": {
+														"type": "string",
+														"format": "date-time",
+														"example": "2024-06-30T07:00:00Z"
+													},
+													"OrderLatePickupDate": {
+														"type": "string",
+														"example": ""
+													},
+													"customAttributes": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"attributeName": {
+																	"type": "string",
+																	"example": "LATE_DELIVERY_FLAG"
+																},
+																"attributeType": {
+																	"type": "string",
+																	"example": "ORDER"
+																},
+																"attributeValue": {
+																	"type": "string",
+																	"example": ""
+																}
+															}
+														}
+													}
+												}
+											}
+										},
+										"StatusMessage": {
+											"type": "string",
+											"example": "Shipment details available."
+										}
+									}
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Technical fault occurred",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"status": {
+											"type": "string",
+											"example": "Error"
+										},
+										"message": {
+											"type": "string",
+											"example": "Technical fault has occurred. please contact Niagara Integration team."
+										},
+										"shipmentDetails": {
+											"type": "array",
+											"items": {
+												"type": "object"
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/bookAppointment": {
+			"post": {
+				"summary": "Book an appointment",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"LatestRescheduleTime": {
+										"type": "string",
+										"format": "date-time",
+										"example": "2024-04-09T13:30:00Z"
+									},
+									"DeliveryNumber": {
+										"type": "string",
+										"example": "35788765"
+									},
+									"EarliestRescheduleTime": {
+										"type": "string",
+										"format": "date-time",
+										"example": "2024-04-09T13:00:00Z"
+									},
+									"ShipmentGid": {
+										"type": "string",
+										"example": "NBL.NB30603917"
+									},
+									"TransactionId": {
+										"type": "integer",
+										"example": 20872
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Appointment booked successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"TransactionStatusCode": {
+											"type": "string",
+											"example": "Success"
+										},
+										"message": {
+											"type": "string",
+											"example": "Successfully Booked the Pickup Appointment."
+										},
+										"ErrorDescription": {
+											"type": "string",
+											"nullable": true,
+											"example": "null"
+										},
+										"TransactionID": {
+											"type": "integer",
+											"example": 66781
+										},
+										"Delivery": {
+											"type": "string",
+											"example": "36104818"
+										},
+										"OrderReleaseGid": {
+											"type": "string",
+											"example": "NBL.36104818"
+										},
+										"TripId": {
+											"type": "string",
+											"nullable": true,
+											"example": null
+										},
+										"CustomerPo": {
+											"type": "string",
+											"example": "1631694343_1"
+										},
+										"CustomerName": {
+											"type": "string",
+											"example": "WAL-MART S,7030,POTTSVILLE,PA,USA"
+										},
+										"Source": {
+											"type": "string",
+											"example": "HAZ"
+										},
+										"Rate_Geo_GID": {
+											"type": "string",
+											"example": "NBL.SNCY|HAZ|WMART_POTTSVILLE_PA|24|A257|1"
+										},
+										"ShipmentGid": {
+											"type": "string",
+											"example": "NBL.NB92105259"
+										},
+										"SalesOrderNumber": {
+											"type": "string",
+											"example": "18758212"
+										},
+										"ShipmentStatus": {
+											"type": "string",
+											"nullable": true,
+											"example": null
+										},
+										"WMSStatus": {
+											"type": "string",
+											"example": "NBL.WMS_NOT_STARTED"
+										},
+										"IsPreload": {
+											"type": "string",
+											"example": "PL"
+										},
+										"Email": {
+											"type": "string",
+											"example": "smith.john@xxxx.com"
+										},
+										"Weight": {
+											"type": "string",
+											"example": "4512"
+										},
+										"Indicator": {
+											"type": "string",
+											"example": "G"
+										},
+										"RefValue": {
+											"type": "string",
+											"example": "Order 1631694343_1 scheduled on 2024-04-09T13:30:00Z"
+										}
+									}
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Technical fault occurred",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"status": {
+											"type": "string",
+											"example": "Error"
+										},
+										"message": {
+											"type": "string",
+											"example": "Technical fault has occurred. Please contact Niagara Integration team."
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/genericOperation": {
+			"post": {
+				"summary": "Perform a generic operation",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"Data": {
+										"type": "string",
+										"example": "Sample data"
+									},
+									"OperationType": {
+										"type": "string",
+										"example": "Insert"
+									},
+									"AdditionalInfo": {
+										"type": "string",
+										"nullable": true,
+										"example": "null"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Operation performed successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"OperationStatus": {
+											"type": "string",
+											"example": "Success"
+										},
+										"Message": {
+											"type": "string",
+											"example": "Operation completed successfully."
+										}
+									}
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Technical fault occurred",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"status": {
+											"type": "string",
+											"example": "Error"
+										},
+										"message": {
+											"type": "string",
+											"example": "Technical fault has occurred. Please contact Niagara Integration team."
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"Transform": "AWS::Serverless-2016-10-31"
+}
